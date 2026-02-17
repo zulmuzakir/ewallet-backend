@@ -7,8 +7,9 @@ package sqlc
 
 import (
 	"context"
+	"time"
 
-	"github.com/jackc/pgx/v5/pgtype"
+	"github.com/google/uuid"
 )
 
 const createUser = `-- name: CreateUser :one
@@ -19,13 +20,13 @@ RETURNING id, full_name, username, email, password, role, created_at, updated_at
 `
 
 type CreateUserParams struct {
-	ID        pgtype.UUID        `json:"id"`
-	FullName  string             `json:"full_name"`
-	Username  string             `json:"username"`
-	Password  string             `json:"password"`
-	Role      string             `json:"role"`
-	CreatedAt pgtype.Timestamptz `json:"created_at"`
-	UpdatedAt pgtype.Timestamptz `json:"updated_at"`
+	ID        uuid.UUID `json:"id"`
+	FullName  string    `json:"full_name"`
+	Username  string    `json:"username"`
+	Password  string    `json:"password"`
+	Role      string    `json:"role"`
+	CreatedAt time.Time `json:"created_at"`
+	UpdatedAt time.Time `json:"updated_at"`
 }
 
 // COMMAND QUERIES
