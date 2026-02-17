@@ -5,6 +5,7 @@ import (
 	"ewallet-backend/internal/domain/entity"
 	"ewallet-backend/internal/domain/repository"
 	"ewallet-backend/internal/repository/sqlc"
+	"ewallet-backend/pkg/helper"
 	"time"
 
 	"github.com/jackc/pgx/v5/pgxpool"
@@ -29,8 +30,8 @@ func (r *userCommandRepo) Create(ctx context.Context, user *entity.User) error {
 		Username:  user.Username,
 		Password:  user.Password,
 		Role:      user.Role,
-		CreatedAt: now,
-		UpdatedAt: now,
+		CreatedAt: helper.TimeToTimestamptz(now),
+		UpdatedAt: helper.TimeToTimestamptz(now),
 	})
 
 	return err
