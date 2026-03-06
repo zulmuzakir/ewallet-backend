@@ -12,6 +12,7 @@ import (
 
 type Config struct {
 	App AppConfig `mapstructure:"app"`
+	Log LogConfig `mapstructure:"log"`
 }
 
 type AppConfig struct {
@@ -38,6 +39,11 @@ type DatabaseConfig struct {
 	MaxOpenConns   int           `mapstructure:"max_open_conns"`
 	MaxIdleConns   int           `mapstructure:"max_idle_conns"`
 	ConMaxLifetime time.Duration `mapstructure:"con_max_lifetime"`
+}
+
+type LogConfig struct {
+	Level  string `mapstructure:"level"`
+	Format string `mapstructure:"format"`
 }
 
 func Load(configPath string) (*Config, error) {
