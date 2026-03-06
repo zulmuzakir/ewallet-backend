@@ -11,6 +11,7 @@ import (
 type Querier interface {
 	// COMMAND QUERIES
 	CreateUser(ctx context.Context, arg CreateUserParams) (User, error)
+	ExistsUserByEmail(ctx context.Context, email string) (bool, error)
 }
 
 var _ Querier = (*Queries)(nil)
