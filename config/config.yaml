@@ -1,0 +1,50 @@
+app:
+  name: "go-wallet"
+  env: "development"
+  base_url: "http://localhost:8080"
+
+server:
+  host: "0.0.0.0"
+  port: 8080
+  read_timeout: 10s
+  write_timeout: 10s
+  shutdown_timeout: 30s
+
+database:
+  host: "localhost"
+  port: 5432
+  user: "postgres"
+  password: "postgres"
+  name: "ewallet"
+  ssl_mode: "disable"
+  max_open_conns: 25
+  max_idle_conns: 5
+  conn_max_lifetime: 5m
+
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+
+smtp:
+  host: "localhost"
+  port: 1025
+  username: ""
+  password: ""
+  from: "noreply@ewallet.local"
+  from_name: "E-Wallet"
+  use_tls: false  # Set to true for production SMTP servers
+
+jwt:
+  token_type: "paseto"    # Options: "jwt" or "paseto"
+  secret: "your-super-secret-jwt-key-change-in-production"
+  expiry: 15m            # Access token expiry
+  refresh_expiry: 168h   # Refresh token expiry (7 days)
+  issuer: "go-strap"
+
+log:
+  level: "debug"
+  format: "console"
+
+
